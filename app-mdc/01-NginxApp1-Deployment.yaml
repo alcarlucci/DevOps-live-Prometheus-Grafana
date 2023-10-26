@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-mdc
+  namespace: app-mdc
+  labels:
+    app: app-mdc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-mdc
+  template:
+    metadata:
+      labels:
+        app: app-mdc
+    spec:
+      containers:
+        - name: app-mdc
+          image: iesodias/mdc:latest
+          ports:
+            - containerPort: 5000

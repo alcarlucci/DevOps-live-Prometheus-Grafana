@@ -1,0 +1,36 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-mdc
+  namespace: app-mdc
+  annotations:
+    # kubernetes.io/ingress.class: nginx
+    spec.ingressClassName: nginx
+
+# Config para o AKS
+# spec:  
+#   rules:
+#   - http:
+#       paths:
+#       - path: /bootcamp/app1/
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: app-mdc
+#             port: 
+#               number: 80
+
+# Config para o Kind
+spec:  
+  #ingressClassName: nginx
+  rules:
+  - host: "kubernetes.docker.internal"
+    http:
+      paths:
+      - path: /bootcamp/app1/
+        pathType: Prefix
+        backend:
+          service:
+            name: app-mdc
+            port: 
+              number: 80
